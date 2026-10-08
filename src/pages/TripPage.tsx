@@ -51,6 +51,7 @@ export function TripPage() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/planner"
+                aria-label="navigate to planner page"
                 className="rounded-full bg-[#f2c14e] px-5 py-3 font-bold text-[#17211b]"
               >
                 Open itinerary
@@ -86,6 +87,11 @@ export function TripPage() {
           </div>
           <div className="mt-6 h-3 overflow-hidden rounded-full bg-[#eceae4]">
             <div
+              role="progressbar"
+              aria-label="Budget used"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={percentage}
               className="h-full rounded-full bg-[#e75d43] transition-all"
               style={{ width: `${percentage}%` }}
             />
@@ -125,6 +131,8 @@ export function TripPage() {
             {trip.checklist.map((item) => (
               <label
                 key={item.id}
+                role="checklistLabel"
+                aria-checked={item.done}
                 className="flex cursor-pointer items-start gap-3 rounded-xl p-2 transition hover:bg-white/5"
               >
                 <input
@@ -151,6 +159,7 @@ export function TripPage() {
               </h2>
               <Link
                 to="/planner"
+                aria-label="navigate to planner page"
                 className="mt-5 inline-flex items-center gap-2 font-bold text-[#713d31]"
               >
                 Fine-tune your days <Icon name="arrow" className="size-4" />
